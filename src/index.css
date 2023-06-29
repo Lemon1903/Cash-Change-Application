@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  font-display: swap;
+  font-weight: 400;
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-display: swap;
+  font-weight: 500;
+  src: url("./assets/fonts/Poppins-Medium.ttf");
+}
+
+@layer base {
+  body {
+    @apply flex min-h-screen justify-center bg-[url(./assets/images/bg.png)] bg-cover font-poppins;
+  }
+
+  #root {
+    @apply flex;
+  }
+}
