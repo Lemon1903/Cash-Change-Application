@@ -5,12 +5,12 @@ import Button from "../components/Button";
 import Denominations from "../components/Denominations";
 import Shell from "../components/Shell";
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "../components/Table";
 import { initialQuantities } from "../lib/data";
 import { IData } from "../types";
@@ -26,7 +26,7 @@ const tableHeaders = [
 
 export default function AdminPage() {
   const { data, isLoading, error } = useSWR<IData>(
-    "http://localhost:3000/db",
+    "https://possible-calm-smelt.glitch.me/db",
     (url: string) => fetch(url).then((response) => response.json())
   );
 

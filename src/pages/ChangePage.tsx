@@ -17,8 +17,9 @@ export default function ChangePage() {
     data: stocks,
     isLoading,
     error,
-  } = useSWR<TDenominations>("http://localhost:3000/stocks", (url) =>
-    fetch(url).then((response) => response.json())
+  } = useSWR<TDenominations>(
+    "https://possible-calm-smelt.glitch.me/stocks",
+    (url) => fetch(url).then((response) => response.json())
   );
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -69,11 +70,11 @@ export default function ChangePage() {
       };
     };
     const updateStocks = await fetch(
-      "http://localhost:3000/stocks",
+      "https://possible-calm-smelt.glitch.me/stocks",
       requestInit(addBillsGivenToStock(), "PUT")
     );
     const updateTransaction = await fetch(
-      "http://localhost:3000/transactions",
+      "https://possible-calm-smelt.glitch.me/transactions",
       requestInit(receipt, "POST")
     );
 
