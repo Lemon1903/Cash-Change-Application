@@ -18,10 +18,6 @@
 
 @layer base {
   body {
-    @apply flex min-h-screen justify-center bg-[url(./assets/images/bg.png)] bg-cover font-poppins;
-  }
-
-  #root {
-    @apply flex;
+    @apply flex min-h-screen items-center justify-center bg-[url(./assets/images/bg.png)] bg-cover font-poppins;
   }
 }
