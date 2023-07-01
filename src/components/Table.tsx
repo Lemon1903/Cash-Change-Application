@@ -8,7 +8,10 @@ export const Table = React.forwardRef<
   <div className="w-full overflow-auto text-center">
     <table
       ref={ref}
-      className="w-full caption-bottom border-2 border-border bg-input text-2xl"
+      className={twMerge(
+        "w-full caption-bottom border-2 border-border bg-input xl:text-2xl",
+        className
+      )}
       {...props}
     />
   </div>
@@ -60,7 +63,10 @@ export const TableHead = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <th
     ref={ref}
-    className="h-12 px-4 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0"
+    className={twMerge(
+      "h-12 px-4 text-center align-middle font-medium [&:has([role=checkbox])]:pr-0",
+      className
+    )}
     {...props}
   />
 ));
@@ -72,7 +78,10 @@ export const TableCell = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className="p-4 align-middle [&:has([role=checkbox])]:pr-0"
+    className={twMerge(
+      "p-4 align-middle [&:has([role=checkbox])]:pr-0",
+      className
+    )}
     {...props}
   />
 ));

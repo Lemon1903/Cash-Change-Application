@@ -18,10 +18,12 @@ export default function Denominations(props: IDenominations) {
   return (
     <div className="grid justify-items-center gap-6">
       {/* Cash */}
-      <div className="flex gap-6">
+      <div className="flex flex-wrap justify-center gap-6 md:max-xl:px-8 lg:max-xl:max-w-4xl xl:px-0">
         {bills.map((bill, idx) => (
           <React.Fragment key={bill}>
-            {idx === 0 && <p className="self-end py-3 text-4xl">QTY:</p>}
+            {idx === 0 && (
+              <p className="self-end py-3 text-4xl max-xl:hidden">QTY:</p>
+            )}
             <Denomination
               type="cash"
               value={bill}
@@ -34,10 +36,12 @@ export default function Denominations(props: IDenominations) {
       </div>
 
       {/* Coins */}
-      <div className="flex gap-6">
+      <div className="flex flex-wrap justify-center gap-6 md:max-xl:px-8 lg:max-xl:max-w-4xl xl:px-0">
         {coins.map((coin, idx) => (
           <React.Fragment key={coin}>
-            {idx === 0 && <p className="self-end py-3 text-4xl">QTY:</p>}
+            {idx === 0 && (
+              <p className="self-end py-3 text-4xl max-xl:hidden">QTY:</p>
+            )}
             <Denomination
               type="coin"
               value={coin}

@@ -4,7 +4,7 @@ import useSWR from "swr";
 import AlertDialog from "../components/AlertDialog";
 import Button from "../components/Button";
 import Denominations from "../components/Denominations";
-import Shell from "../components/Shell";
+import { PageHeader, PageLayout } from "../components/PageLayout";
 import ShowReceiptDialog from "../components/ShowReceiptDialog";
 import { useReceipt } from "../contexts/ReceiptProvider";
 import { calculateChange } from "../lib/algorithm";
@@ -91,28 +91,28 @@ export default function ChangePage() {
   }
 
   return (
-    <Shell>
+    <PageLayout>
       {/* Upper Output */}
-      <div className="grid h-36 max-w-5xl text-right text-5xl">
-        <div className="grid grid-cols-7 items-center gap-4">
-          <label className="col-span-4" htmlFor="change">
+      <PageHeader>
+        <div className="grid items-center gap-2 lg:grid-cols-2 lg:gap-4 xl:grid-cols-7">
+          <label className="xl:col-span-4" htmlFor="change">
             TOTAL CHANGE:
           </label>
           <input
             id="change"
             type="number"
-            className="col-span-3 border border-border px-4 py-3 text-3xl drop-shadow-md disabled:bg-output"
+            className="border border-border px-4 py-3 text-2xl drop-shadow-md disabled:bg-output xl:col-span-3 xl:text-3xl"
             disabled
             value={change}
           />
         </div>
-      </div>
+      </PageHeader>
 
       {/* Middle Outputs */}
       <Denominations quantities={denominations} />
 
       {/* Buttons */}
-      <div className="flex gap-8">
+      <div className="flex gap-8 max-md:flex-col">
         <ShowReceiptDialog />
         <Button intent="secondary" text="Main Menu" onClick={saveTransaction} />
       </div>
@@ -130,6 +130,6 @@ export default function ChangePage() {
           )
         }
       />
-    </Shell>
+    </PageLayout>
   );
 }

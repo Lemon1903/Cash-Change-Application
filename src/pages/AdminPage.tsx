@@ -3,7 +3,7 @@ import useSWR from "swr";
 import AlertDialog from "../components/AlertDialog";
 import Button from "../components/Button";
 import Denominations from "../components/Denominations";
-import Shell from "../components/Shell";
+import { PageHeader, PageLayout } from "../components/PageLayout";
 import {
   Table,
   TableBody,
@@ -45,28 +45,30 @@ export default function AdminPage() {
   }
 
   return (
-    <Shell>
+    <PageLayout>
       {/* Upper Output */}
-      <div className="grid h-36 max-w-5xl text-right text-5xl">
-        <div className="grid grid-cols-7 items-center gap-4">
-          <label className="col-span-4" htmlFor="stocks">
+      <PageHeader>
+        <div className="grid items-center gap-2 lg:grid-cols-2 lg:gap-4 xl:grid-cols-7">
+          <label className="xl:col-span-4" htmlFor="stocks">
             STOCKS VALUE:
           </label>
           <input
             id="stocks"
             type="number"
-            className="col-span-3 border border-border px-4 py-3 text-3xl drop-shadow-md disabled:bg-output"
+            className="border border-border px-4 py-3 text-2xl drop-shadow-md disabled:bg-output xl:col-span-3 xl:text-3xl"
             disabled
             value={stocksValue}
           />
         </div>
-      </div>
+      </PageHeader>
 
       {/* Middle Output */}
       <Denominations quantities={data ? data.stocks : initialQuantities} />
 
       {/* Transaction History */}
-      <h1 className="mt-12 text-5xl">TRANSACTION HISTORY</h1>
+      <h1 className="mt-12 text-2xl md:text-3xl xl:text-5xl">
+        TRANSACTION HISTORY
+      </h1>
       <Table>
         <TableHeader>
           <TableRow className="border-border">
@@ -84,7 +86,7 @@ export default function AdminPage() {
                 <TableCell>PHP {transaction.amountToPay}</TableCell>
                 <TableCell>PHP {transaction.cashGiven}</TableCell>
                 <TableCell>
-                  <div className="space-y-4">
+                  <div className="mx-auto w-24 xl:space-y-2">
                     {transaction.billsGiven.map((bill, idx) => (
                       <div key={idx} className="grid grid-cols-2 gap-2">
                         <span className="text-right">{bill.denomination}</span>
@@ -95,7 +97,7 @@ export default function AdminPage() {
                 </TableCell>
                 <TableCell>PHP {transaction.totalChange}</TableCell>
                 <TableCell>
-                  <div className="space-y-4">
+                  <div className="mx-auto w-24 xl:space-y-2">
                     {transaction.changeBills.map((bill, idx) => (
                       <div key={idx} className="grid grid-cols-2 gap-2">
                         <span className="text-right">{bill.denomination}</span>
@@ -126,6 +128,6 @@ export default function AdminPage() {
         description="Fetching transaction history..."
         isOpen={isLoading}
       />
-    </Shell>
+    </PageLayout>
   );
 }

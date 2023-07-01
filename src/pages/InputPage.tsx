@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AlertDialog from "../components/AlertDialog";
 import Button from "../components/Button";
 import Denominations from "../components/Denominations";
-import Shell from "../components/Shell";
+import { PageHeader, PageLayout } from "../components/PageLayout";
 import { useReceipt } from "../contexts/ReceiptProvider";
 import { initialQuantities } from "../lib/data";
 import { getValidatedValue } from "../lib/utils";
@@ -66,34 +66,34 @@ export default function InputPage() {
   }
 
   return (
-    <Shell>
+    <PageLayout>
       {/* Upper Inputs */}
-      <div className="grid h-36 max-w-5xl gap-4 text-right text-5xl">
-        <div className="grid grid-cols-7 items-center gap-4">
-          <label className="col-span-4" htmlFor="amount">
+      <PageHeader>
+        <div className="grid items-center gap-2 lg:grid-cols-2 lg:gap-4 xl:grid-cols-7">
+          <label className="xl:col-span-4" htmlFor="amount">
             AMOUNT TO BE PAID:
           </label>
           <input
             id="amount"
             type="number"
-            className="col-span-3 border border-border px-4 py-3 text-3xl"
+            className="border border-border px-4 py-3 text-2xl xl:col-span-3 xl:text-3xl"
             placeholder="Enter amount in PHP..."
             value={amount}
             onChange={handleAmountChange}
           />
         </div>
-        <div className="grid grid-cols-7 items-center gap-4">
-          <label className="col-span-4" htmlFor="cash">
+        <div className="grid items-center gap-2 lg:grid-cols-2 lg:gap-4 xl:grid-cols-7">
+          <label className="xl:col-span-4" htmlFor="cash">
             CASH GIVEN:
           </label>
           <input
             id="cash"
-            className="col-span-3 border border-border px-4 py-3 text-3xl disabled:bg-input"
+            className="border border-border px-4 py-3 text-2xl disabled:bg-input xl:col-span-3 xl:text-3xl"
             disabled
             value={cashGiven}
           />
         </div>
-      </div>
+      </PageHeader>
 
       {/* Middle Inputs */}
       <Denominations
@@ -110,6 +110,6 @@ export default function InputPage() {
         trigger={<Button intent="primary" text="Done" onClick={handleDone} />}
         action={<Button intent="dialog" text="Understood" />}
       />
-    </Shell>
+    </PageLayout>
   );
 }

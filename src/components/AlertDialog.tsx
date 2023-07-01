@@ -24,11 +24,11 @@ export default function AlertDialog({
       )}
       <AlertDialogue.Portal>
         <AlertDialogue.Overlay className="fixed inset-0 z-50 bg-border/60 backdrop-blur-sm" />
-        <AlertDialogue.Content className="fixed left-1/2 top-1/2 z-50 -mt-6 grid max-w-lg -translate-x-1/2 -translate-y-1/2 border-2 border-border bg-input px-6 py-8 drop-shadow-md">
-          <AlertDialogue.Title className="text-3xl font-medium">
+        <AlertDialogue.Content className="fixed left-1/2 top-1/2 z-50 -mt-6 grid w-4/5  max-w-sm -translate-x-1/2 -translate-y-1/2 border-2 border-border bg-input px-6 py-8 drop-shadow-md md:max-w-lg">
+          <AlertDialogue.Title className="text-2xl font-medium md:text-3xl">
             {title}
           </AlertDialogue.Title>
-          <AlertDialogue.Description className="mb-10 mt-2 text-2xl">
+          <AlertDialogue.Description className="mb-10 mt-2 text-lg md:text-2xl">
             {description}
           </AlertDialogue.Description>
           {action && (
