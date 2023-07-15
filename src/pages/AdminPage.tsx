@@ -5,12 +5,12 @@ import Button from "../components/Button";
 import Denominations from "../components/Denominations";
 import { PageHeader, PageLayout } from "../components/PageLayout";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "../components/Table";
 import { initialQuantities } from "../lib/data";
 import { IData } from "../types";
@@ -79,7 +79,7 @@ export default function AdminPage() {
         </TableHeader>
         <TableBody>
           {data?.transactions && data.transactions.length > 0 ? (
-            data.transactions.map((transaction, idx) => (
+            [...data.transactions].reverse().map((transaction, idx) => (
               // Lists each row of transactions
               <TableRow key={idx}>
                 <TableCell>{transaction.date}</TableCell>

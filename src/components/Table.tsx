@@ -5,11 +5,11 @@ export const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="w-full overflow-auto text-center">
+  <div className="max-h-[1000px] w-full overflow-auto border-2 border-border text-center">
     <table
       ref={ref}
       className={twMerge(
-        "w-full caption-bottom border-2 border-border bg-input xl:text-2xl",
+        "w-full caption-bottom bg-input xl:text-2xl",
         className
       )}
       {...props}
