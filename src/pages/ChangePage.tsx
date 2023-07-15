@@ -70,11 +70,11 @@ export default function ChangePage() {
       };
     };
     const updateStocks = await fetch(
-      "https://possible-calm-smelt.glitch.me/stocks",
+      "https://cash-change-database.glitch.me/stocks",
       requestInit(addBillsGivenToStock(), "PUT")
     );
     const updateTransaction = await fetch(
-      "https://possible-calm-smelt.glitch.me/transactions",
+      "https://cash-change-database.glitch.me/transactions",
       requestInit(receipt, "POST")
     );
 
