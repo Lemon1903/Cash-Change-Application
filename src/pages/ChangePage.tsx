@@ -18,7 +18,7 @@ export default function ChangePage() {
     isLoading,
     error,
   } = useSWR<TDenominations>(
-    "https://possible-calm-smelt.glitch.me/stocks",
+    "https://cash-change-database.glitch.me/stocks",
     (url) => fetch(url).then((response) => response.json())
   );
   const [isUpdating, setIsUpdating] = useState(false);

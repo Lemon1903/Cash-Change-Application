@@ -26,7 +26,7 @@ const tableHeaders = [
 
 export default function AdminPage() {
   const { data, isLoading, error } = useSWR<IData>(
-    "https://possible-calm-smelt.glitch.me/db",
+    "https://cash-change-database.glitch.me/db",
     (url: string) => fetch(url).then((response) => response.json())
   );
 
