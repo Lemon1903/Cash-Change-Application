@@ -50,7 +50,7 @@ export default function ChangePage() {
       }
     });
     return denominationVal === change;
-  }, []);
+  }, [change, denominations]);
   const message = { title: "", description: "" };
 
   if (isLoading) {
