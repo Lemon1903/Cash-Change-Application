@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import AlertDialog from "../components/AlertDialog";
@@ -40,13 +40,29 @@ export default function ChangePage() {
     }
   }, [stocks]);
 
+  const isEnoughStocks = useMemo(() => {
+    let denominationVal = 0;
+    Object.entries(denominations).forEach(([key, quantity]) => {
+      if (key === "20c" || key === "20b") {
+        denominationVal += 20 * quantity;
+      } else {
+        denominationVal += Number(key) * quantity;
+      }
+    });
+    return denominationVal === change;
+  }, []);
   const message = { title: "", description: "" };
+
   if (isLoading) {
     message.title = "Loading";
     message.description = "Fetching denomination stocks...";
   } else if (isUpdating) {
     message.title = "Loading";
     message.description = "Saving transaction...";
+  } else if (!isEnoughStocks) {
+    message.title = "Transaction Failed";
+    message.description =
+      "Cannot make the change because the stocks is insufficient.";
   } else {
     message.title = "Cannot make a change";
     message.description =
@@ -121,9 +137,14 @@ export default function ChangePage() {
       <AlertDialog
         title={message.title}
         description={message.description}
-        isOpen={isLoading || isUpdating || receipt.amountToPay === 0}
+        isOpen={
+          isLoading ||
+          isUpdating ||
+          !isEnoughStocks ||
+          receipt.amountToPay === 0
+        }
         action={
-          isLoading || isUpdating ? undefined : (
+          isLoading || isUpdating || isEnoughStocks ? undefined : (
             <Link className="justify-self-end" to="/buyer/input">
               <Button intent="dialog" text="Make some inputs" />
             </Link>
